@@ -1,0 +1,23 @@
+{
+  "name": "boa",
+  "version": "1.0.0",
+  "description": "Banking application for withdrawl, deposit, and statement inquiry.",
+  "main": "BOA.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siricoa94/BOA.git"
+  },
+  "author": "Andrew L. Sirico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siricoa94/BOA/issues"
+  },
+  "homepage": "https://github.com/siricoa94/BOA#readme",
+  "dependencies": {
+    "inquirer": "^7.0.0",
+    "mysql": "^2.17.1"
+  }
+}
