@@ -21,7 +21,7 @@
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="logIn">Submit</button>
     </form>
 
 
@@ -48,21 +48,20 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-</script>
-<script>
-    (function () {
-        var app = document.querySelector("");
-        app.signIn = function(){
-            var email = app.email;
-            var password = app.password;
 
-            if(!email || !password) {
-                return prompt("Email or Password Required!");
-            }
-        };
-       
+  var emailText = document.getElementById("exampleInputEmail1");
+  var passwordText = document.getElementById("exampleInputPassword1");
+  var logIn = document.getElementById("logIn");
 
-    })
+  logIn.addEventListener("click", e => {
+    var email = emailText.valuel
+    var password = passwordText.value;
+    var auth = firebase.auth();
+    var promise = auth.signInWithEmailAndPassword(email, password);
+    promise.catch(e => console.log(e.message));
+
+  })
+
 
 </script>
 </body>
