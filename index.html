@@ -78,13 +78,13 @@ logOut.addEventListener("click", e => {
 });
 logIn.addEventListener("click", e => {
   e.preventDefault();
+  window.location.pathname = "main";
   var email = txtEmail.value;
   var password = txtPassword.value;
   var auth = firebase.auth();
   var promise = auth.signInWithEmailAndPassword(email, password);
   promise
   .catch(e => console.log(e.message));
-  res.sendFile(path.join(__dirname, "main.html"));
 });
   
 </script>
