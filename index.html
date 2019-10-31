@@ -58,25 +58,26 @@ firebase.auth().onAuthStateChanged( user => {
   }
 });
 
-var emailText = document.getElementById("exampleInputEmail1");
-var passwordText = document.getElementById("exampleInputPassword1");
+var txtEmail = document.getElementById("exampleInputEmail1");
+var txtPassword = document.getElementById("exampleInputPassword1");
 var logIn = document.getElementById("logIn");
 var logOut = document.getElementById("logOut");
 var signUp = document.getElementById("signUp");
 
 signUp.addEventListener("click", e => {
+  e.preventDefault();
   var email = txtEmail.value;
   var password = txtPassword.value;
   var auth = firebase.auth();
   var promise = auth.createUserWithEmailAndPassword(email, password);
   promise
   .catch(e => console.log(e.message));
-  e.preventDefault();
 });
 logOut.addEventListener("click", e => {
   firebase.auth().signOut();
 });
 logIn.addEventListener("click", e => {
+  e.preventDefault();
   var email = txtEmail.value;
   var password = txtPassword.value;
   var auth = firebase.auth();
