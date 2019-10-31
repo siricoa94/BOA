@@ -8,7 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <title>Document</title>
+
+<title>Document</title>
 </head>
 <body>
     <form>
@@ -25,59 +26,66 @@
         <button type="submit" class="btn btn-primary" id="signUp">Sign Up Here</button>
         <button type="submit" class="btn btn-primary" id="logOut">Bye Bye!</button>
     </form>
-
-
-
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-<!-- Add Firebase products that you want to use -->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
 
-<!-- Add Firebase products that you want to use -->
-
-<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
-
-
 <script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBzypdC3VeT_pvzX7KAwbxIAA4S_oZ7DiY",
-    authDomain: "bank-of-andrew.firebaseapp.com",
-    databaseURL: "https://bank-of-andrew.firebaseio.com",
-    projectId: "bank-of-andrew",
-    storageBucket: "bank-of-andrew.appspot.com",
-    messagingSenderId: "546770562236",
-    appId: "1:546770562236:web:dd7848ed4c0e03dfa434b9",
-    measurementId: "G-XFSNBP5MJB"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyBzypdC3VeT_pvzX7KAwbxIAA4S_oZ7DiY",
+  authDomain: "bank-of-andrew.firebaseapp.com",
+  databaseURL: "https://bank-of-andrew.firebaseio.com",
+  projectId: "bank-of-andrew",
+  storageBucket: "bank-of-andrew.appspot.com",
+  messagingSenderId: "546770562236",
+  appId: "1:546770562236:web:dd7848ed4c0e03dfa434b9",
+  measurementId: "G-XFSNBP5MJB"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
-    var emailText = document.getElementById("exampleInputEmail1");
-    var passwordText = document.getElementById("exampleInputPassword1");
-    var logIn = document.getElementById("logIn");
-    var logOut = document.getElementById("logOut");
-    var signUp = document.getElementById("signUp");
+firebase.auth().onAuthStateChanged( user => {
+  if (user) {
+    console.log("user signed in");
+  } else {
+    console.log("no user signed in");
+  }
+});
 
-  logIn.addEventListener("click", e => {
-    var email = emailText.value;
-    var password = passwordText.value;
-    var auth = firebase.auth();
-    var promise = auth.signInWithEmailAndPassword(email, password);
-    promise.catch(e => console.log(e.message));
-  });
-  signUp.addEventListener("click", e => {
-    var email = emailText.value;
-    var password = passwordText.value;
-    var auth = firebase.auth();
-    var promise = auth.createUserWithEmailAndPassword(email, password);
-    promise.catch(e => console.log(e.message));
-  })
+var emailText = document.getElementById("exampleInputEmail1");
+var passwordText = document.getElementById("exampleInputPassword1");
+var logIn = document.getElementById("logIn");
+var logOut = document.getElementById("logOut");
+var signUp = document.getElementById("signUp");
 
-
-
-
+signUp.addEventListener("click", e => {
+  var email = txtEmail.value;
+  var password = txtPassword.value;
+  var auth = firebase.auth();
+  var promise = auth.createUserWithEmailAndPassword(email, password);
+  promise
+  .catch(e => console.log(e.message));
+  e.preventDefault();
+});
+logOut.addEventListener("click", e => {
+  firebase.auth().signOut();
+});
+logIn.addEventListener("click", e => {
+  var email = txtEmail.value;
+  var password = txtPassword.value;
+  var auth = firebase.auth();
+  var promise = auth.signInWithEmailAndPassword(email, password);
+  promise
+  .catch(e => console.log(e.message));
+  res.sendFile(path.join(__dirname, "main.html"));
+});
+  
 </script>
 </body>
 </html>
