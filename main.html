@@ -14,11 +14,22 @@
 <body>
     <p>welcome</p>
     <button type="submit" class="btn btn-primary" id="logOut">Bye Bye!</button>
+    <div id="newsDiv">
+
+    </div>
 <script>
+var news = document.getElementById("newsDiv");
 logOut.addEventListener("click", e => {
     window.location.pathname = "/";
     firebase.auth().signOut();
 });
+var url = 'https://newsapi.org/v2/top-headlines?' +
+        'country=us&' +
+        'apiKey=99825351fd8e4c9a8a6df2c10b6ab9f6';
+var req = new Request(url);
+fetch(req)
+    .then(response => response.json())
+    .then(articles => this.setState({articles}));
 </script>
 </body>
 </html>
