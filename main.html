@@ -12,10 +12,12 @@
     <title>Document</title>
 </head>
 <body>
-    <p>welcome</p>
+    <div id="mainContainer">
+            <p>welcome</p>
     <button type="submit" class="btn btn-primary" id="logOut">Bye Bye!</button>
     <div id="newsDiv">
 
+    </div>
     </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
@@ -33,9 +35,7 @@ fetch(req)
     console.log(response.json());
 });
 $.ajax({
-        url: 'https://newsapi.org/v2/top-headlines?' +
-        'country=us&' +
-        'apiKey=99825351fd8e4c9a8a6df2c10b6ab9f6',
+        url: 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=99825351fd8e4c9a8a6df2c10b6ab9f6',
         method: "GET"
     })
     .then(function (response) {

@@ -4,6 +4,10 @@
     height: 100%;
     background-color: blue !important;
 }
+#mainContainer{
+    background-color: lightgrey;
+    opacity: .5%;
+}
 #signInForm{
     position: absolute;
     top: 50%;
@@ -14,5 +18,8 @@
     border-radius: 1rem;
 }
 .atricleContainer{
-    padding: 5%;
+    padding: 2%;
+    margin: 2%;
+    background-color: white;
+    border-radius: 1rem;
 }
