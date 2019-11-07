@@ -10,6 +10,9 @@ router.get("/", function(req, res){
 router.get("/main", function(req, res){
     res.sendFile(path.join(__dirname, "main.html"));
 });
+router.get("/account", function(req, res){
+    res.sendFile(path.join(__dirname, "account.html"));
+});
 router.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = router;
