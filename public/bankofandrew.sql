@@ -6,4 +6,6 @@ CREATE TABLE account(
     balance INT(10) NOT NULL,
     PRIMARY KEY (id)
 );
+INSERT INTO account (balance)
+VALUES("500.00");
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Slark98';
